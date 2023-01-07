@@ -1,0 +1,7 @@
+CREATE TABLE pedidos (id INTEGER PRIMARY KEY AUTOINCREMENT, idcliente INTEGER, fchpedido TEXT, baseimponible REAL DEFAULT 0.0, iva REAL DEFAULT 0.0, importetotal REAL DEFAULT 0.0, fchprevent TEXT, estado INTEGER DEFAULT 1, vendedor INTEGER);
+CREATE TABLE lineaspedido (id INTEGER PRIMARY KEY AUTOINCREMENT, idpedido INTEGER, idarticulo INTEGER, descripcion TEXT, piezas INTEGER, largo INTEGER, ancho INTEGER, grueso INTEGER, cantidad REAL, UN TEXT, precio REAL, baseimponible REAL, iva REAL, importe REAL, fchprevent TEXT, fchent TEXT, estado INTEGER);
+CREATE TABLE articulos (id INTEGER PRIMARY KEY AUTOINCREMENT, codigo TEXT, descripcion TEXT, largo INTEGER, ancho INTEGER, grueso INTEGER, UN TEXT, estado INTEGER);
+CREATE TABLE IF NOT EXISTS 'users' ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'username' TEXT NOT NULL, 'hash' TEXT NOT NULL, 'cash' NUMERIC NOT NULL DEFAULT 10000.00 );
+CREATE TABLE IF NOT EXISTS 'clientes' ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'CIF' TEXT NOT NULL, 'nombrefiscal' TEXT NOT NULL, 'nombrecomercial' TEXT NOT NULL,'direccion' TEXT,'cp' INTEGER,'provincia' TEXT,'pais' TEXT NOT NULL DEFAULT 'España');
+CREATE TABLE IF NOT EXISTS 'paquetes' (id INTEGER PRIMARY KEY AUTOINCREMENT, codigo VARCHAR(6), idArticulo INTEGER, piezas INTEGER, largo REAL, ancho REAL, grueso REAL, calculo REAL, UN TEXT, estado INTEGER, origen INTEGER, IdOT INTEGER);
+

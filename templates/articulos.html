@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    registros
+{% endblock %}
+
+{% block main %}
+    <style>
+    table {
+        border: 2px solid black;
+    }
+    th {
+        padding: 15px;
+        border: 2px solid black;
+    }
+    td {
+        padding: 15px;
+        border: 1px solid black;
+    }
+    </style>
+    {% if registros!=[]%}
+    <panel>
+        <label>Todos los artículos</label>
+    </panel>
+    {% else %}
+        <label class="text-warning"><h1>No hay artículos en la base de datos</h1></label>
+    {% endif %}
+    {% if registros!=[] %}
+    <br/>
+    <form action="{{ url_for('articulos') }}" method="post">
+    <table>
+        <tr><th>id</th><th>Código</th><th>Descripción</th><th>Largo</th><th>Ancho</th><th>Grueso</th><th>UN</th><th></th><th></th></tr>
+        {% for registro in registros %}
+        <tr>
+            <td>{{registro.id}}</td><td>{{registro.codigo}}</td>
+            <td>{{registro.descripcion}}</td>
+            <td>{{registro.largo}}</td><td>{{registro.ancho}}</td>
+            <td>{{registro.grueso}}</td>
+            <td>{{registro.UN}}</td>
+            <td><button class="btn btn-default" type="submit" name="action" value="m{{registro.id}}">Modificar</button></td>
+            <td><button class="btn btn-default" type="submit" name="action" value="e{{registro.id}}">Eliminar</button></td>
+        </tr>
+        {% endfor %}
+    </table>
+    </form>
+    {% endif %}
+{% endblock %}
